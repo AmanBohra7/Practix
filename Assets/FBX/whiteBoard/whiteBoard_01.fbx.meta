@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: a9c5fb1ff7940b843b6fb0e9bd2516ca
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: base_holder_bolt
+    100002: boad_stand_base
+    100004: board_holder_bolt
+    100006: Cube.002
+    100008: wheel
+    100010: wheel_holder_bolt
+    100012: white_board.001
+    100014: white_board.003
+    100016: //RootNode
+    400000: base_holder_bolt
+    400002: boad_stand_base
+    400004: board_holder_bolt
+    400006: Cube.002
+    400008: wheel
+    400010: wheel_holder_bolt
+    400012: white_board.001
+    400014: white_board.003
+    400016: //RootNode
+    2100000: Metal
+    2100002: black
+    2100004: Aluminium
+    2100006: white_board
+    2100008: bolt
+    2300000: base_holder_bolt
+    2300002: boad_stand_base
+    2300004: board_holder_bolt
+    2300006: Cube.002
+    2300008: wheel
+    2300010: wheel_holder_bolt
+    2300012: white_board.001
+    2300014: white_board.003
+    2300016: //RootNode
+    3300000: base_holder_bolt
+    3300002: boad_stand_base
+    3300004: board_holder_bolt
+    3300006: Cube.002
+    3300008: wheel
+    3300010: wheel_holder_bolt
+    3300012: white_board.001
+    3300014: white_board.003
+    3300016: //RootNode
+    4300000: white_board_stand
+    4300002: white_board.001
+    4300004: white_board.003
+    4300006: base_holder_bolt
+    4300008: boad_stand_base
+    4300010: Cube.002
+    4300012: wheel
+    4300014: wheel_holder_bolt
+    4300016: board_holder_bolt
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Aluminium
+    second: {fileID: 2100000, guid: a59fa0384b348b14598a5c84d8dbc3d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: e5de78e362bd7c0459a71a67d14b66dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black
+    second: {fileID: 2100000, guid: 9fd62f0f7ae70fd439459e94ffff52fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bolt
+    second: {fileID: 2100000, guid: 97093c010e6f72d4dbb0cee77fa035ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: white_board
+    second: {fileID: 2100000, guid: e122cf64efa4b8941ba00eeaff922ed3, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

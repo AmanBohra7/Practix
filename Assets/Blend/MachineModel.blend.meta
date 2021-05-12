@@ -1,0 +1,305 @@
+fileFormatVersion: 2
+guid: 9249680ad613aa6478c407cbe664e43b
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Digital
+    100002: Digital.001
+    100004: Digital.002
+    100006: Digital.003
+    100008: Holder
+    100010: Holder Bolts
+    100012: Holder Bolts.001
+    100014: Holder Bolts.002
+    100016: Holder Bolts.003
+    100018: Holder.001
+    100020: Lever Stand
+    100022: Lever Switch
+    100024: Light
+    100026: Meter Pole
+    100028: Motor
+    100030: Off
+    100032: On
+    100034: Pointer
+    100036: Rod Broken Falling
+    100038: Rod Broken Stuck
+    100040: Rod Complete
+    100042: Sun
+    100044: Table
+    100046: //RootNode
+    100048: Wire
+    400000: Digital
+    400002: Digital.001
+    400004: Digital.002
+    400006: Digital.003
+    400008: Holder
+    400010: Holder Bolts
+    400012: Holder Bolts.001
+    400014: Holder Bolts.002
+    400016: Holder Bolts.003
+    400018: Holder.001
+    400020: Lever Stand
+    400022: Lever Switch
+    400024: Light
+    400026: Meter Pole
+    400028: Motor
+    400030: Off
+    400032: On
+    400034: Pointer
+    400036: Rod Broken Falling
+    400038: Rod Broken Stuck
+    400040: Rod Complete
+    400042: Sun
+    400044: Table
+    400046: //RootNode
+    400048: Wire
+    2100000: Machine_Base.001
+    2100002: Plate
+    2100004: LED_Panel
+    2100006: LED_Screen
+    2100008: Button
+    2100010: Button_Big
+    2100012: Switch Plate
+    2100014: Table
+    2100016: Wire
+    2100018: Switch
+    2100020: Dial
+    2100022: Machine_Base
+    2100024: Rotor
+    2100026: Screws
+    2100028: Material
+    2100030: Rotor_Fix
+    2300000: Digital
+    2300002: Digital.001
+    2300004: Digital.002
+    2300006: Digital.003
+    2300008: Holder
+    2300010: Holder Bolts
+    2300012: Holder Bolts.001
+    2300014: Holder Bolts.002
+    2300016: Holder Bolts.003
+    2300018: Holder.001
+    2300020: Lever Stand
+    2300022: Lever Switch
+    2300024: Meter Pole
+    2300026: Motor
+    2300028: Off
+    2300030: On
+    2300032: Pointer
+    2300034: Rod Broken Falling
+    2300036: Rod Broken Stuck
+    2300038: Rod Complete
+    2300040: Table
+    2300042: Wire
+    3300000: Digital
+    3300002: Digital.001
+    3300004: Digital.002
+    3300006: Digital.003
+    3300008: Holder
+    3300010: Holder Bolts
+    3300012: Holder Bolts.001
+    3300014: Holder Bolts.002
+    3300016: Holder Bolts.003
+    3300018: Holder.001
+    3300020: Lever Stand
+    3300022: Lever Switch
+    3300024: Meter Pole
+    3300026: Motor
+    3300028: Off
+    3300030: On
+    3300032: Pointer
+    3300034: Rod Broken Falling
+    3300036: Rod Broken Stuck
+    3300038: Rod Complete
+    3300040: Table
+    3300042: Wire
+    4300000: Meter Pole
+    4300002: Digital
+    4300004: Digital.001
+    4300006: Digital.002
+    4300008: Digital.003
+    4300010: On
+    4300012: Off
+    4300014: Table
+    4300016: Wire
+    4300018: Lever Stand
+    4300020: Lever Switch
+    4300022: Motor
+    4300024: Pointer
+    4300026: Holder
+    4300028: Holder Bolts
+    4300030: Holder Bolts.003
+    4300032: Rod Complete
+    4300034: Rod Broken Stuck
+    4300036: Rod Broken Falling
+    4300038: Holder Bolts.001
+    4300040: Holder.001
+    4300042: Holder Bolts.002
+    10800000: Light
+    10800002: Sun
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Button
+    second: {fileID: 2100000, guid: 51d535190c3a17c47853e70f27534b96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Button_Big
+    second: {fileID: 2100000, guid: 789ffae52987aab439b1ee0c82e084b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dial
+    second: {fileID: 2100000, guid: ef726e5a9e0a7294d8a1154ecc654e12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LED_Panel
+    second: {fileID: 2100000, guid: d7014bb7ea429d540890fb3954dd051e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LED_Screen
+    second: {fileID: 2100000, guid: 50b3ea0fbe226b94580846f9fca6163e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Machine_Base
+    second: {fileID: 2100000, guid: 76c7be97c3b647342a30f36c466eb1fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Machine_Base.001
+    second: {fileID: 2100000, guid: 87ebcc671591e504392e8c5e5cc0cd5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 809200e5517bde345bb2f517e4b468c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plate
+    second: {fileID: 2100000, guid: b9f7d6cc02fd5724aae162fa121e4732, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rotor
+    second: {fileID: 2100000, guid: 0f7aa3c57f30e8e4eaa06fe0cd901458, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rotor_Fix
+    second: {fileID: 2100000, guid: 98a35ea575f63b541bfe00cada5bb4b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screws
+    second: {fileID: 2100000, guid: 08fe08bb9eda8ee4d8a79cc4ecceeb7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Switch
+    second: {fileID: 2100000, guid: faac895f796356a4c9deac4ac1fe6d92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Switch Plate
+    second: {fileID: 2100000, guid: 55721766542cd7f428f722b3f143fe9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Table
+    second: {fileID: 2100000, guid: 62a75f12c6bec1d44b34f06f69213700, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wire
+    second: {fileID: 2100000, guid: c6fb1284500e0cc41abbee8a7137df02, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
