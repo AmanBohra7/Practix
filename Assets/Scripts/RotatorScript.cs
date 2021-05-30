@@ -12,37 +12,26 @@ public class RotatorScript : MonoBehaviour
     Vector3 cameraPreviousPose = Vector3.zero;
     Vector3 cameraPoseoffset;
 
-    public float rotatespeed = 10000f;
     private Vector3 _startingPosition;
 
     float rotationAngle;
 
-    void Start()
-    {
+    void Start(){
         m_UIcontrollerInstance = UIController.instance;
         ShowRotationNotice();
     }
 
 
-    void ShowRotationNotice()
-    {
+    void ShowRotationNotice(){
         // m_UIcontrollerInstance.TurnoverRotationNotice();
         m_UIcontrollerInstance.TurnoverSubmitButton();
         m_UIcontrollerInstance.SetSubmitButtonText("Confirm");
         m_UIcontrollerInstance.SetSubmitButtonFunc("rotation");
     }
 
-    public void RotationSet()
-    {
+    public void RotationSet(){
         gameObject.GetComponent<ScalingScript>().enabled = true;
     }
-
-    // void OnMouseDrag()
-    // {
-    //     float rotX = Input.GetAxis("Mouse X") * 10f * Mathf.Deg2Rad;
-    //     transform.Rotate(Vector3.up, -rotX);
-    // }
-
 
     void Update()
     {
