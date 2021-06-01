@@ -2,6 +2,8 @@ using UnityEngine;
 using TMPro;
 using System;
 using System.Collections.Generic;
+using System.Collections;
+using SimpleJSON;
 
 public class InputManager : MonoBehaviour
 {
@@ -73,8 +75,29 @@ public class InputManager : MonoBehaviour
         inputFieldHolder.Add("diameter", new BoardInput(diameter, false));
         inputFieldHolder.Add("length", new BoardInput(length, false));
 
+
+        if(UserConnection.Instance.isUserDataRecieved){
+            AddPreviousUserExp(UserConnection.Instance.userData);
+        }
     
     }
+
+    private void AddPreviousUserExp(JSONNode userData)
+    {
+        inputFieldHolder["t_01"].inputField.text = userData["values"]["expValues"]["row01"]["torque"];
+        inputFieldHolder["t_02"].inputField.text = userData["values"]["expValues"]["row02"]["torque"];
+
+        inputFieldHolder["angle_01"].inputField.text = userData["values"]["expValues"]["row01"]["angleOfTwist"];
+        inputFieldHolder["angle_02"].inputField.text = userData["values"]["expValues"]["row02"]["angleOfTwist"];
+
+        length.text = userData["values"]["rodInfo"]["length"];
+        diameter.text = userData["values"]["rodInfo"]["diameter"];
+
+
+        g_01.text = userData["values"]["expValues"]["row01"]["modulusG"];
+        g_02.text = userData["values"]["expValues"]["row02"]["modulusG"];
+    }
+
 
 
     public void StoreDiameterValue()
@@ -106,9 +129,30 @@ public class InputManager : MonoBehaviour
         if(inputName == "angle_02"){
             if(inputFieldHolder["angle_01"].inputField.text == "") return;
             reachedMachineEnd = true;
+
+            UpdatedUserData();
+            
             GameEvents.instance.MachineStepsCompleted();
+            
         }
     
+    }
+
+    private void UpdatedUserData()
+    {
+        UserExp userexp = new UserExp();
+        userexp.SetValues(
+            float.Parse(length.text),
+            float.Parse(diameter.text),
+            float.Parse(inputFieldHolder["t_01"].inputField.text),
+            float.Parse(inputFieldHolder["angle_01"].inputField.text),
+            float.Parse(g_01.text),
+            float.Parse(inputFieldHolder["t_02"].inputField.text),
+            float.Parse(inputFieldHolder["angle_02"].inputField.text),
+            float.Parse(g_02.text)
+        );
+
+        UserConnection.Instance.UpdateUserExp(userexp);
     }
 
     public void HighlightInputField(string name)

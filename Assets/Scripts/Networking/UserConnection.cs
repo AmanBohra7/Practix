@@ -3,21 +3,44 @@ using UnityEngine;
 using UnityEngine.Networking;
 using SimpleJSON;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 ///
 ///</summary>
 public class UserConnection : MonoBehaviour{
     
+    public static UserConnection Instance;
+
     private string LOGIN_URL = "http://localhost:5001/userlogin";
     private string SIGNUP_URL = "http://localhost:5001/createuser";
     private string ADD_USEREXP_URL = "http://localhost:5001/userdata";
+    private string GET_USEREXP_URL = "http://localhost:5001/userdata";
+
+    public string USERID;
 
     public TMP_InputField emailInput;
     public TMP_InputField passwordInput;
 
+
+    public bool isUserDataRecieved;
+    public JSONNode userData;
+
+    void Awake(){
+        if(Instance == null){
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else{
+            Destroy(gameObject);
+        }
+    }
+
+
     void Start(){
-        StartCoroutine(SendUserExp());
+        // StartCoroutine(SendUserExp());
+
+        // StartCoroutine(GetUserExp());
+        
     }
 
     IEnumerator CreateUser(){
@@ -77,17 +100,26 @@ public class UserConnection : MonoBehaviour{
 
             if (www.isNetworkError || www.isHttpError)
             {
-                Debug.Log(www.error);
+                // Debug.Log(www.error);
+                if(www.responseCode == 401)
+                    Debug.Log("No user with this email!");
+                if(www.responseCode == 403)
+                    Debug.Log("Wrong password!");
             }
             else
             {
                 JSONNode jsonData = JSON.Parse(www.downloadHandler.text);
-                
-                if(!jsonData["userid"]){
-                    Debug.Log("Something went wrong!");
-                }else{
-                    Debug.Log("Logged In with ID: "+jsonData["userid"]);
-                }
+    
+
+        
+                Debug.Log("Logged In with ID: "+jsonData["userid"]);
+                USERID = jsonData["userid"];
+                StartCoroutine(GetUserExp());
+                // if we have logged in getting user data with the userid
+
+
+
+                SceneManager.LoadScene(2);
 
             }
         }
@@ -96,22 +128,50 @@ public class UserConnection : MonoBehaviour{
 
 
 
-    IEnumerator SendUserExp(){
+    IEnumerator GetUserExp(){
 
-        UserExp userexp = new UserExp();
+        using(UnityWebRequest www = UnityWebRequest.Get(GET_USEREXP_URL + "/" + USERID)){
+            yield return www.SendWebRequest();
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                JSONNode jsonData = JSON.Parse(www.downloadHandler.text);
+                // print(www.responseCode);
+                isUserDataRecieved = true;
+                userData = jsonData;
+                Debug.Log("Got user data of id : "+jsonData["userid"]);
+            }
+        }
+    }
 
-        // userexp.name = "aman";
 
-        userexp.SetValues(
-            10.0f,
-            20.0f,
-            20.0f,
-            20.0f,
-            20.0f,
-            20.0f,
-            20.0f,
-            20.0f
+
+    public void UpdateUserExp(UserExp userexp){
+        userexp.userid = USERID;
+        StartCoroutine(
+            SendUserExp(userexp)
         );
+    }
+
+    IEnumerator SendUserExp(UserExp userexp= null){
+
+        
+        if(userexp == null){
+            userexp = new UserExp();
+            userexp.SetValues(
+                10.0f,
+                20.0f,
+                20.0f,
+                20.0f,
+                20.0f,
+                20.0f,
+                20.0f,
+                20.0f
+            );
+        }
     
 
         string sendData = JsonUtility.ToJson(userexp);
@@ -140,7 +200,6 @@ public class UserConnection : MonoBehaviour{
 
         }
 
-        yield break;
     }
 
 }
