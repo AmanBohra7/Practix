@@ -38,12 +38,6 @@ public class MainRodComponent : MonoBehaviour
     // step 5 funtions
     public void BreakRod(float waitTime = 0)
     {
-        // float testTimer = 2.5f;
-        // Debug.Log("broken rod called!");
-        // m_brokenRodPart.GetComponent<Outline>().enabled = true;
-        // LeanTween.moveLocalY(m_brokenRodPart, -0.0681f, testTimer)
-        //    .setEaseOutBounce();
-        // Invoke("RemoveOutline", testTimer);
         StartCoroutine(RemoveOutline(waitTime));
     }
 

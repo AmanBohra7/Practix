@@ -15,6 +15,7 @@ TagManager:
   - BoardPointer
   - VideoPanel
   - WhiteBox
+  - subtitleText
   layers:
   - Default
   - TransparentFX

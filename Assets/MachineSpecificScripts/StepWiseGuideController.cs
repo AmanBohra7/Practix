@@ -12,6 +12,8 @@ public class StepWiseGuideController : MonoBehaviour
     GameObject MachineObject;
     MachineComponentScript m_machineComponentScriptInstance;
 
+    MachineUserInterface m_MachineInstanceUI;
+
 
     private void Awake() {
         if(instance != null){
@@ -35,8 +37,18 @@ public class StepWiseGuideController : MonoBehaviour
 
         MachineObject = GameObject.FindGameObjectWithTag("Machine");
         // CallforStep1();
-        callForRodInputStep();
-        
+
+        m_machineComponentScriptInstance = MachineObject.GetComponent<MachineComponentScript>();
+        m_MachineInstanceUI = MachineUserInterface.instance;
+
+
+        StartCoroutine(callForRodInputStep());
+
+        // enable parent image for subtitle text bg
+        m_MachineInstanceUI.EnableSubtitleBg();
+
+        string sub = "Objective of this experiment is to conduct torsion test on a specimen to determine modulus of rigidity.";
+        m_MachineInstanceUI.UpdateSubtitleText(sub);
     }
 
 
@@ -44,8 +56,10 @@ public class StepWiseGuideController : MonoBehaviour
         m_machineComponentScriptInstance.EndOfMachineSteps();
     }
 
-    void callForRodInputStep(){
-        m_machineComponentScriptInstance = MachineObject.GetComponent<MachineComponentScript>();
+    IEnumerator callForRodInputStep(){
+        yield return new WaitForSeconds(5f);
+        string sub = " The specimen is a circular rod made up of aluminium alloy material. \n Its gauge length is 110mm and its radius is 7.5mm. \n Note down the gauge length and diameter of the specimen on the board.";
+        m_MachineInstanceUI.UpdateSubtitleText(sub);
         m_machineComponentScriptInstance.GetRodInput();
     }
 

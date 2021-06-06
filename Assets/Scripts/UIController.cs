@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -34,6 +32,7 @@ public class UIController : MonoBehaviour
 
     public TextMeshProUGUI informationText;
 
+
     Button m_increment;
     Button m_decrement;
 
@@ -46,10 +45,11 @@ public class UIController : MonoBehaviour
     }
 
     public void SetInfoText(string text){
-        Debug.Log("SET INFO TEXT function called!");
+        // Debug.Log("SET INFO TEXT function called!");
         informationText.text  = text;
     }
 
+   
     public void TurnoverScanningNotice(){ 
         if(m_ScanningNoticeRunning){
             m_ScanningNotice.SetActive(false);
