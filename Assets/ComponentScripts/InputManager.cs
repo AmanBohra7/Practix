@@ -60,8 +60,8 @@ public class InputManager : MonoBehaviour
     public static bool reachedMachineEnd = false;
 
 
-    double m_Diameter = 0.5;
-    double m_Length = 0.1;
+    float m_Diameter = 0.5f;
+    float m_Length = 0.1f;
 
     void Start()
     {
@@ -102,14 +102,14 @@ public class InputManager : MonoBehaviour
 
     public void StoreDiameterValue()
     {
-        m_Diameter = double.Parse(diameter.text);
+        m_Diameter = float.Parse(diameter.text);
         HighlightInputField("length");
         diameter.GetComponent<InputHighlight>().StopHighlighter();
     }
 
     public void StoreLengthValue()
     {
-        m_Length = double.Parse(length.text);
+        m_Length = float.Parse(length.text);
         length.GetComponent<InputHighlight>().StopHighlighter();
         GameEvents.instance.RodInputCompleted();
         // Debug.Log("Both Values Recieved!");
@@ -162,12 +162,23 @@ public class InputManager : MonoBehaviour
     }
 
 
-    float CalcuateModulus(double t, double a)
+    float CalcuateModulus(float t1,float t2, float q1,float q2)
     {
-        double j = (3.14 / 32) * (m_Diameter * m_Diameter * m_Diameter * m_Diameter);
-        double ret = (t * m_Length) / (j * a);
-        float ans = (float)Math.Round(ret, 2);
-        return ans;
+        // float j = (3.14 / 32) * (m_Diameter * m_Diameter * m_Diameter * m_Diameter);
+        // float ret = (t * m_Length) / (j * a);
+        // float ans = (float)Math.Round(ret, 2);
+
+        float num = 5731 * (t2-t1) * m_Length;
+        float din  = Mathf.Pow(m_Diameter,4) * (q2-q1);
+        float cal_g = num / din;
+
+        float exp_g = 27;
+
+        if(Mathf.Abs(exp_g - cal_g) > 1.5){
+            Debug.LogWarning("Calculated value is very different!");
+        }
+
+        return cal_g;
     }
 
     void FixedUpdate()
@@ -175,14 +186,18 @@ public class InputManager : MonoBehaviour
         if (inputFieldHolder["t_01"].valueStored && inputFieldHolder["angle_01"].valueStored && !inputOneCompleted)
         {
             inputOneCompleted = true;
-            g_01.text = CalcuateModulus(double.Parse(t_01.text), double.Parse(angle_01.text)).ToString();
+            // g_01.text = CalcuateModulus(float.Parse(t_01.text), float.Parse(angle_01.text)).ToString();
             // Debug.Log("Input one completed!" + g_01.text);
         }
         if (inputFieldHolder["t_02"].valueStored && inputFieldHolder["angle_02"].valueStored && !inputTwoCompleted)
         {
             inputTwoCompleted = true;
             // Debug.Log("Input one completed!");
-            g_02.text = CalcuateModulus(double.Parse(t_02.text), double.Parse(angle_02.text)).ToString();
+            g_02.text = CalcuateModulus(float.Parse(t_02.text), 
+                float.Parse(t_02.text),
+                float.Parse(angle_02.text),
+                float.Parse(angle_02.text)
+                ).ToString();
         }
     }
 

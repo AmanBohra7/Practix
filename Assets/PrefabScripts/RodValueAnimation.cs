@@ -95,4 +95,6 @@ public class RodValueAnimation : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         txt.enabled = true;
     }
+
+  
 }

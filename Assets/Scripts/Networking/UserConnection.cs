@@ -203,3 +203,40 @@ public class UserConnection : MonoBehaviour{
     }
 
 }
+
+
+/*
+1. Loading panel after login [UI]
+2. Showing warning | wrong pass, no user [UI]
+4. Login page UI [UI]
+7. Chaning green board [UI]
+
+8. Hosting the backend
+
+*/
+
+
+ 
+// 5. Updating real values 
+    /*
+    REAL VALUES
+
+    kg.cm
+
+    starting from 0 :: Q
+    1. 270
+    2. 270 + 270 -> 180
+
+    starting from 0.0 :: t
+    1. 403
+    2. 980
+
+    G = 5731 X (t2-t1) X length 
+                / 
+        ( D^4 ) X (Q2 - Q1)
+
+    G : 27 GPa
+
+    */
+// 6. Below subtitles with voice | Yotube style 
+// 9. Validation 

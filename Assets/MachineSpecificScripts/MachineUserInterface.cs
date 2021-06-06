@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Video;
+using TMPro;
+using UnityEngine.UI;
 
 #if UNITY_EDITOR
 using Input = GoogleARCore.InstantPreviewInput;
@@ -21,6 +23,7 @@ public class MachineUserInterface : MonoBehaviour
     public GameObject m_VideoPlayer;
     public VideoClip video02;
 
+    public TextMeshProUGUI subtitleText;
 
     private void Awake()
     {
@@ -37,7 +40,18 @@ public class MachineUserInterface : MonoBehaviour
     void Start()
     {
         // m_VideoPlayer.SetActive(true);
+        subtitleText = GameObject.FindGameObjectWithTag("subtitleText").GetComponent<TextMeshProUGUI>();
+        subtitleText.text = "";
     }
+
+     public void UpdateSubtitleText(string str){
+        subtitleText.text = str;
+    }
+
+    public void EnableSubtitleBg(){
+        subtitleText.gameObject.GetComponentInParent<Image>().enabled = true;
+    }
+
 
     public void SetActiveVideoObject(float timeDelay = 0,int num=1)
     {

@@ -561,7 +561,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 120 cm
+  m_text: 110 mm
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c4ed26069f7212444b8099aa20173c68, type: 2}
   m_sharedMaterial: {fileID: 21856856074956264, guid: c4ed26069f7212444b8099aa20173c68,
@@ -717,7 +717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20 mm
+  m_text: 7.5 mm
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c4ed26069f7212444b8099aa20173c68, type: 2}
   m_sharedMaterial: {fileID: 21856856074956264, guid: c4ed26069f7212444b8099aa20173c68,
@@ -787,10 +787,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 527050758585201991}
-    characterCount: 5
+    characterCount: 6
     spriteCount: 0
     spaceCount: 1
-    wordCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -3705,6 +3705,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 37.823
+      objectReference: {fileID: 0}
+    - target: {fileID: 9190223365163296267, guid: bac14d56bf632754da8f94b217298656,
+        type: 3}
+      propertyPath: m_text
+      value: Length (mm)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9190223365163296267, guid: bac14d56bf632754da8f94b217298656,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 27.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 9190223365163296267, guid: bac14d56bf632754da8f94b217298656,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bac14d56bf632754da8f94b217298656, type: 3}
