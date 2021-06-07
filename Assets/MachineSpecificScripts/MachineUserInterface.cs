@@ -41,16 +41,21 @@ public class MachineUserInterface : MonoBehaviour
     {
         // m_VideoPlayer.SetActive(true);
         subtitleText = GameObject.FindGameObjectWithTag("subtitleText").GetComponent<TextMeshProUGUI>();
-        subtitleText.text = "";
+        UpdateSubtitleText("");
     }
 
      public void UpdateSubtitleText(string str){
+        if(str == ""){
+            subtitleText.gameObject.GetComponentInParent<Image>().enabled = false;
+        }else{
+            subtitleText.gameObject.GetComponentInParent<Image>().enabled = true;
+        }
         subtitleText.text = str;
     }
 
-    public void EnableSubtitleBg(){
-        subtitleText.gameObject.GetComponentInParent<Image>().enabled = true;
-    }
+    // public void EnableSubtitleBg(){
+    //     subtitleText.gameObject.GetComponentInParent<Image>().enabled = true;
+    // }
 
 
     public void SetActiveVideoObject(float timeDelay = 0,int num=1)

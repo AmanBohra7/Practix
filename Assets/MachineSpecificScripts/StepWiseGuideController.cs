@@ -44,9 +44,6 @@ public class StepWiseGuideController : MonoBehaviour
 
         StartCoroutine(callForRodInputStep());
 
-        // enable parent image for subtitle text bg
-        m_MachineInstanceUI.EnableSubtitleBg();
-
         string sub = "Objective of this experiment is to conduct torsion test on a specimen to determine modulus of rigidity.";
         m_MachineInstanceUI.UpdateSubtitleText(sub);
     }
@@ -58,15 +55,17 @@ public class StepWiseGuideController : MonoBehaviour
 
     IEnumerator callForRodInputStep(){
         yield return new WaitForSeconds(5f);
-        string sub = " The specimen is a circular rod made up of aluminium alloy material. \n Its gauge length is 110mm and its radius is 7.5mm. \n Note down the gauge length and diameter of the specimen on the board.";
+        string sub = "The specimen is a circular rod made up of aluminium alloy material. \n Its gauge length is 110mm and its radius is 7.5mm. \n Note down the gauge length and diameter of the specimen on the board.";
         m_MachineInstanceUI.UpdateSubtitleText(sub);
-        m_machineComponentScriptInstance.GetRodInput();
+        m_machineComponentScriptInstance.GetRodInput(); 
     }
 
 
     // current Adding function for break point to give time for rod to goBack to pose
     void HelperCallforStep1(){
         m_machineComponentScriptInstance.OnRodInputComplete();
+        string sub = "";
+        m_MachineInstanceUI.UpdateSubtitleText(sub);
         Invoke("CallforStep1",2.7f);
     }
 
@@ -74,23 +73,31 @@ public class StepWiseGuideController : MonoBehaviour
     // pick and animate rod to position
     public void CallforStep1(){
         StepState = 1;  
+        string sub = "Now fix the torsion specimen in the specimen holders of the machine.";
+        m_MachineInstanceUI.UpdateSubtitleText(sub);
         m_machineComponentScriptInstance.InitializeStep1();
     }
 
     // drag and place the motor
     public void CallforStep2(){
         StepState = 2;
+        string sub = "Adjust the driving mechanism with the help of geared motor handle and select the direction of motor rotation also.";
+        m_MachineInstanceUI.UpdateSubtitleText(sub);
         m_machineComponentScriptInstance.InitializeStep2();
     }
 
     // switch on the button and lights glows
     public void CallforStep3(){
         StepState = 3;
+        string sub = "Now start the machine.";
+        m_MachineInstanceUI.UpdateSubtitleText(sub);
         m_machineComponentScriptInstance.InitializeStep3();
     }
     
     public void CallforStep4(){
         StepState = 4;
+        string sub = "Now start the motor by dragging the lever. Thus the test piece is twisted.";
+        m_MachineInstanceUI.UpdateSubtitleText(sub);
         m_machineComponentScriptInstance.InitializeStep4();
     }
     

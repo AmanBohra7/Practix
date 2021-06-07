@@ -1,12 +1,13 @@
 using UnityEngine;
 using TMPro;
-using System;
 using System.Collections.Generic;
-using System.Collections;
 using SimpleJSON;
 
 public class InputManager : MonoBehaviour
 {
+
+    // machine user interface ref
+    MachineUserInterface ui_interface;
 
     class BoardInput
     {
@@ -75,6 +76,8 @@ public class InputManager : MonoBehaviour
         inputFieldHolder.Add("diameter", new BoardInput(diameter, false));
         inputFieldHolder.Add("length", new BoardInput(length, false));
 
+        ui_interface = MachineUserInterface.instance;
+        Debug.Log("Testing : "+ui_interface.gameObject.name);
 
         if(UserConnection.Instance.isUserDataRecieved){
             AddPreviousUserExp(UserConnection.Instance.userData);
@@ -146,12 +149,11 @@ public class InputManager : MonoBehaviour
             float.Parse(diameter.text),
             float.Parse(inputFieldHolder["t_01"].inputField.text),
             float.Parse(inputFieldHolder["angle_01"].inputField.text),
-            float.Parse(g_01.text),
+            0,
             float.Parse(inputFieldHolder["t_02"].inputField.text),
             float.Parse(inputFieldHolder["angle_02"].inputField.text),
-            float.Parse(g_02.text)
+            0
         );
-
         UserConnection.Instance.UpdateUserExp(userexp);
     }
 
@@ -176,21 +178,26 @@ public class InputManager : MonoBehaviour
 
         if(Mathf.Abs(exp_g - cal_g) > 1.5){
             Debug.LogWarning("Calculated value is very different!");
+            string sub = "You have found the wrong value of modulus of rigidity. Please try to perform the experiment again.";
+            ui_interface.UpdateSubtitleText(sub);
+        }else{
+            string sub = "You have found the correct value of modulus of rigidity. You have successfully completed the experiment.";
+            ui_interface.UpdateSubtitleText(sub);
         }
 
+        Debug.Log("Calculated G : "+cal_g.ToString());
+        Debug.Log("Actual G : "+exp_g.ToString());
         return cal_g;
     }
 
     void FixedUpdate()
     {
-        if (inputFieldHolder["t_01"].valueStored && inputFieldHolder["angle_01"].valueStored && !inputOneCompleted)
-        {
+        if (inputFieldHolder["t_01"].valueStored && inputFieldHolder["angle_01"].valueStored && !inputOneCompleted){
             inputOneCompleted = true;
             // g_01.text = CalcuateModulus(float.Parse(t_01.text), float.Parse(angle_01.text)).ToString();
             // Debug.Log("Input one completed!" + g_01.text);
         }
-        if (inputFieldHolder["t_02"].valueStored && inputFieldHolder["angle_02"].valueStored && !inputTwoCompleted)
-        {
+        if (inputFieldHolder["t_02"].valueStored && inputFieldHolder["angle_02"].valueStored && !inputTwoCompleted){
             inputTwoCompleted = true;
             // Debug.Log("Input one completed!");
             g_02.text = CalcuateModulus(float.Parse(t_02.text), 

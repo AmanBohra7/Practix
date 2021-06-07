@@ -210,9 +210,7 @@ public class UserConnection : MonoBehaviour{
 2. Showing warning | wrong pass, no user [UI]
 4. Login page UI [UI]
 7. Chaning green board [UI]
-
 8. Hosting the backend
-
 */
 
 
@@ -227,7 +225,7 @@ public class UserConnection : MonoBehaviour{
     1. 270
     2. 270 + 270 -> 180
 
-    starting from 0.0 :: t
+    starting from 0.0 :: t 
     1. 403
     2. 980
 

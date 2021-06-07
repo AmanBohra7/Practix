@@ -126,8 +126,12 @@ public class LeverScript02 : MonoBehaviour
         LeverMovement("backword", 1.5f, 3f);
 
         StartCoroutine(HelperCallDoubleArrow(3f));
-        m_Reading.text = "25.0"+" kg-cm";
+        m_Reading.text = "403"+" kg.cm";
 
+
+        // Change summary text after view is played
+        string sub = "Take readings of torque and angle of twist. Note down those values on the adjacent board.";
+        ui_interface.UpdateSubtitleText(sub);
     }
 
 
@@ -148,7 +152,7 @@ public class LeverScript02 : MonoBehaviour
         // m_BoardPointer.SetActive(false);
 
         StartCoroutine(HelperCallDoubleArrow(3f));
-        m_Reading.text = "50.0"+" kg-cm";
+        m_Reading.text = "980"+" kg.cm";
 
     }
 
@@ -170,6 +174,11 @@ public class LeverScript02 : MonoBehaviour
             string info = "Drag lever to forward direction!";
             // ui_interface = MachineUserInterface.instance;
             ui_interface.InstantiateArrowPrefab(m_LeverObj, info, "lever");
+
+             // Change summary text after view is played
+            string sub = "Now continue applying torque till the specimen fractures and take readings at a certain interval.";
+            ui_interface.UpdateSubtitleText(sub);
+
         }
 
         if (InputManager.inputTwoCompleted && !test02)
