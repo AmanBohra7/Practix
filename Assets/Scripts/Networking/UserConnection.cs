@@ -211,10 +211,7 @@ public class UserConnection : MonoBehaviour{
 4. Login page UI [UI]
 7. Chaning green board [UI]
 8. Hosting the backend
-*/
-
-
- 
+*/  
 // 5. Updating real values 
     /*
     REAL VALUES
@@ -236,5 +233,8 @@ public class UserConnection : MonoBehaviour{
     G : 27 GPa
 
     */
-// 6. Below subtitles with voice | Yotube style 
+// 6. Below subtitles with voice | Yotube style 50 
 // 9. Validation 
+// loading sign 
+// restart button | logic
+// test button | coming soon. . . .. . .

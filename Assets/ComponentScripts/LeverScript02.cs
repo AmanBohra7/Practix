@@ -122,7 +122,7 @@ public class LeverScript02 : MonoBehaviour
         yield return StartCoroutine(PlayCutSceneVideo());
         //  Animation part of the step
         LeverMovement("forward", 1.5f);
-        HolderRotation(90.0f, 1.5f, 1.5f);
+        HolderRotation(270.0f, 1.5f, 1.5f);
         LeverMovement("backword", 1.5f, 3f);
 
         StartCoroutine(HelperCallDoubleArrow(3f));
@@ -146,7 +146,7 @@ public class LeverScript02 : MonoBehaviour
         yield return StartCoroutine(PlayCutSceneVideo(2));
 
         LeverMovement("forward", 1.5f);
-        HolderRotation(45f, 1.5f, 1.5f);
+        HolderRotation(270f, 1.5f, 1.5f);
         LeverMovement("backword", 1.5f, 3f);
 
         // m_BoardPointer.SetActive(false);

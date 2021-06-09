@@ -170,13 +170,14 @@ public class InputManager : MonoBehaviour
         // float ret = (t * m_Length) / (j * a);
         // float ans = (float)Math.Round(ret, 2);
 
+        t2 += 360;
         float num = 5731 * (t2-t1) * m_Length;
         float din  = Mathf.Pow(m_Diameter,4) * (q2-q1);
         float cal_g = num / din;
 
         float exp_g = 27;
 
-        if(Mathf.Abs(exp_g - cal_g) > 1.5){
+        if(exp_g != cal_g){
             Debug.LogWarning("Calculated value is very different!");
             string sub = "You have found the wrong value of modulus of rigidity. Please try to perform the experiment again.";
             ui_interface.UpdateSubtitleText(sub);
