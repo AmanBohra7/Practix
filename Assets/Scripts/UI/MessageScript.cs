@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using TMPro;
 
 /// <summary>
 ///
@@ -30,6 +31,10 @@ public class MessageScript : MonoBehaviour{
 
         yield return new WaitForSeconds(1.6f);
         Destroy(gameObject);
+    }
+
+    public void ChangeText(string text){
+        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = text;
     }
 
 }

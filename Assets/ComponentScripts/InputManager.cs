@@ -47,8 +47,7 @@ public class InputManager : MonoBehaviour
     public TMP_InputField angle_01;
     public TMP_InputField angle_02;
 
-    public TMP_InputField g_01;
-    public TMP_InputField g_02;
+    public TMP_InputField modulusG;
 
     public TMP_InputField diameter;
     public TMP_InputField length;
@@ -97,8 +96,8 @@ public class InputManager : MonoBehaviour
         diameter.text = userData["values"]["rodInfo"]["diameter"];
 
 
-        g_01.text = userData["values"]["expValues"]["row01"]["modulusG"];
-        g_02.text = userData["values"]["expValues"]["row02"]["modulusG"];
+        modulusG.text = userData["values"]["expValues"]["modulusG"];
+        // g_02.text = userData["values"]["expValues"]["row02"]["modulusG"];
     }
 
 
@@ -144,15 +143,17 @@ public class InputManager : MonoBehaviour
     private void UpdatedUserData()
     {
         UserExp userexp = new UserExp();
+
+        if(modulusG.text == "") modulusG.text = "0.0";
+
         userexp.SetValues(
             float.Parse(length.text),
             float.Parse(diameter.text),
             float.Parse(inputFieldHolder["t_01"].inputField.text),
             float.Parse(inputFieldHolder["angle_01"].inputField.text),
-            0,
             float.Parse(inputFieldHolder["t_02"].inputField.text),
             float.Parse(inputFieldHolder["angle_02"].inputField.text),
-            0
+            float.Parse(modulusG.text)
         );
         UserConnection.Instance.UpdateUserExp(userexp);
     }
@@ -166,22 +167,26 @@ public class InputManager : MonoBehaviour
 
     float CalcuateModulus(float t1,float t2, float q1,float q2)
     {
-        // float j = (3.14 / 32) * (m_Diameter * m_Diameter * m_Diameter * m_Diameter);
-        // float ret = (t * m_Length) / (j * a);
-        // float ans = (float)Math.Round(ret, 2);
-
-        t2 += 360;
+        // q1 = 270
+        q2 += 360;
+        // q2 = 540
+        // t1 = 403 , t2 = 908
         float num = 5731 * (t2-t1) * m_Length;
+        // num = 31,83,57,050
         float din  = Mathf.Pow(m_Diameter,4) * (q2-q1);
+        // din = 1,36,68,750
         float cal_g = num / din;
+        // cal_g = 23.29
 
         float exp_g = 27;
 
         if(exp_g != cal_g){
+            AudioManager.Instance.PlayAudio(10);
             Debug.LogWarning("Calculated value is very different!");
             string sub = "You have found the wrong value of modulus of rigidity. Please try to perform the experiment again.";
             ui_interface.UpdateSubtitleText(sub);
         }else{
+            AudioManager.Instance.PlayAudio(9);
             string sub = "You have found the correct value of modulus of rigidity. You have successfully completed the experiment.";
             ui_interface.UpdateSubtitleText(sub);
         }
@@ -195,15 +200,15 @@ public class InputManager : MonoBehaviour
     {
         if (inputFieldHolder["t_01"].valueStored && inputFieldHolder["angle_01"].valueStored && !inputOneCompleted){
             inputOneCompleted = true;
-            // g_01.text = CalcuateModulus(float.Parse(t_01.text), float.Parse(angle_01.text)).ToString();
-            // Debug.Log("Input one completed!" + g_01.text);
+            // modulusG.text = CalcuateModulus(float.Parse(t_01.text), float.Parse(angle_01.text)).ToString();
+            // Debug.Log("Input one completed!" + modulusG.text);
         }
         if (inputFieldHolder["t_02"].valueStored && inputFieldHolder["angle_02"].valueStored && !inputTwoCompleted){
             inputTwoCompleted = true;
             // Debug.Log("Input one completed!");
-            g_02.text = CalcuateModulus(float.Parse(t_02.text), 
+            modulusG.text = CalcuateModulus(float.Parse(t_01.text), 
                 float.Parse(t_02.text),
-                float.Parse(angle_02.text),
+                float.Parse(angle_01.text),
                 float.Parse(angle_02.text)
                 ).ToString();
         }

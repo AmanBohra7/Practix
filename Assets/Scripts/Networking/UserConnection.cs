@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using SimpleJSON;
@@ -17,12 +17,14 @@ public class UserConnection : MonoBehaviour{
     private string ADD_USEREXP_URL = "http://localhost:5001/userdata";
     private string GET_USEREXP_URL = "http://localhost:5001/userdata";
 
+    [HideInInspector]
     public string USERID;
 
     public TMP_InputField emailInput;
     public TMP_InputField passwordInput;
 
 
+    [HideInInspector]
     public bool isUserDataRecieved;
     public JSONNode userData;
 
@@ -70,6 +72,8 @@ public class UserConnection : MonoBehaviour{
                 Debug.LogWarning("Empty Field!");
                 return;}
         
+        
+
         string email = emailInput.text;
         string password = passwordInput.text;
 
@@ -101,15 +105,22 @@ public class UserConnection : MonoBehaviour{
             if (www.isNetworkError || www.isHttpError)
             {
                 // Debug.Log(www.error);
-                if(www.responseCode == 401)
+                if(www.responseCode == 401){
                     Debug.Log("No user with this email!");
-                if(www.responseCode == 403)
+                    StartCoroutine(instantiateMessage("Incorrect Email!"));
+                }
+                    
+                if(www.responseCode == 403){
                     Debug.Log("Wrong password!");
+                    StartCoroutine(instantiateMessage("Incorrect Password!"));
+                }
+                    
             }
             else
             {
                 JSONNode jsonData = JSON.Parse(www.downloadHandler.text);
-    
+                
+                StartCoroutine(instantiateMessage("Logged in successfully!"));
 
         
                 Debug.Log("Logged In with ID: "+jsonData["userid"]);
@@ -117,9 +128,9 @@ public class UserConnection : MonoBehaviour{
                 StartCoroutine(GetUserExp());
                 // if we have logged in getting user data with the userid
 
+                
 
-
-                SceneManager.LoadScene(2);
+                SceneManager.LoadSceneAsync(2);
 
             }
         }
@@ -129,7 +140,6 @@ public class UserConnection : MonoBehaviour{
 
 
     IEnumerator GetUserExp(){
-
         using(UnityWebRequest www = UnityWebRequest.Get(GET_USEREXP_URL + "/" + USERID)){
             yield return www.SendWebRequest();
             if (www.isNetworkError || www.isHttpError)
@@ -168,7 +178,6 @@ public class UserConnection : MonoBehaviour{
                 20.0f,
                 20.0f,
                 20.0f,
-                20.0f,
                 20.0f
             );
         }
@@ -202,22 +211,27 @@ public class UserConnection : MonoBehaviour{
 
     }
 
+
+    public GameObject messagePrefab;
+    public GameObject canvasParent;
+    IEnumerator instantiateMessage(string text){
+        yield return new WaitForSeconds(0);
+
+        GameObject messageObj = Instantiate(
+            messagePrefab,
+            Vector3.zero,
+            messagePrefab.transform.rotation,
+            canvasParent.gameObject.transform
+        );
+        messageObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 50,0);
+        messageObj.AddComponent<MessageScript>();
+        messageObj.GetComponent<MessageScript>().ChangeText(text);
+    }
+
 }
 
-
+  
 /*
-1. Loading panel after login [UI]
-2. Showing warning | wrong pass, no user [UI]
-4. Login page UI [UI]
-7. Chaning green board [UI]
-8. Hosting the backend
-*/  
-// 5. Updating real values 
-    /*
-    REAL VALUES
-
-    kg.cm
-
     starting from 0 :: Q
     1. 270
     2. 270 + 270 -> 180
@@ -231,10 +245,15 @@ public class UserConnection : MonoBehaviour{
         ( D^4 ) X (Q2 - Q1)
 
     G : 27 GPa
+*/
 
-    */
-// 6. Below subtitles with voice | Yotube style 50 
-// 9. Validation 
-// loading sign 
-// restart button | logic
-// test button | coming soon. . . .. . .
+
+
+// confirming the calculation part
+// testing the application in android 
+// Restart button logic 
+// completing login page UI 
+
+
+// seperate the git repo for backend
+// hosting 

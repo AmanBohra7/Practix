@@ -19,7 +19,7 @@ public class ScalingScript : MonoBehaviour
         m_UIControllerInstance.TurnoverSizeButton();
         m_UIControllerInstance.SetSubmitButtonText("Confirm");
         m_UIControllerInstance.SetSubmitButtonFunc("scaling");
-        m_UIControllerInstance.SetInfoText("Incrase and adjust machine size");
+        m_UIControllerInstance.SetInfoText("Increase and adjust machine size");
 
         anchorInstance = GameObject.FindGameObjectWithTag("MachineAnchor");
         

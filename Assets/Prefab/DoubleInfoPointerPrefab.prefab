@@ -293,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InfoPanel: {fileID: 0}
   m_DottedLine: {fileID: 6162857146912305800}
-  isDoubleArrow: 1
+  isDoubleArrow: 0
 --- !u!1 &7606495521462178731
 GameObject:
   m_ObjectHideFlags: 0

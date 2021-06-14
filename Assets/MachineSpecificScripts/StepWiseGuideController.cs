@@ -44,6 +44,7 @@ public class StepWiseGuideController : MonoBehaviour
 
         StartCoroutine(callForRodInputStep());
 
+        AudioManager.Instance.PlayAudio(1);
         string sub = "Objective of this experiment is to conduct torsion test on a specimen to determine modulus of rigidity.";
         m_MachineInstanceUI.UpdateSubtitleText(sub);
     }
@@ -54,10 +55,13 @@ public class StepWiseGuideController : MonoBehaviour
     }
 
     IEnumerator callForRodInputStep(){
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(11f);
         string sub = "The specimen is a circular rod made up of aluminium alloy material. \n Its gauge length is 110mm and its radius is 7.5mm. \n Note down the gauge length and diameter of the specimen on the board.";
         m_MachineInstanceUI.UpdateSubtitleText(sub);
         m_machineComponentScriptInstance.GetRodInput(); 
+
+        yield return new WaitForSeconds(2f);
+        AudioManager.Instance.PlayAudio(2);
     }
 
 
@@ -72,7 +76,8 @@ public class StepWiseGuideController : MonoBehaviour
 
     // pick and animate rod to position
     public void CallforStep1(){
-        StepState = 1;  
+        StepState = 1;
+        AudioManager.Instance.PlayAudio(3);  
         string sub = "Now fix the torsion specimen in the specimen holders of the machine.";
         m_MachineInstanceUI.UpdateSubtitleText(sub);
         m_machineComponentScriptInstance.InitializeStep1();
@@ -81,6 +86,7 @@ public class StepWiseGuideController : MonoBehaviour
     // drag and place the motor
     public void CallforStep2(){
         StepState = 2;
+        AudioManager.Instance.PlayAudio(4);  
         string sub = "Adjust the driving mechanism with the help of geared motor handle and select the direction of motor rotation also.";
         m_MachineInstanceUI.UpdateSubtitleText(sub);
         m_machineComponentScriptInstance.InitializeStep2();
@@ -89,6 +95,7 @@ public class StepWiseGuideController : MonoBehaviour
     // switch on the button and lights glows
     public void CallforStep3(){
         StepState = 3;
+        AudioManager.Instance.PlayAudio(5);  
         string sub = "Now start the machine.";
         m_MachineInstanceUI.UpdateSubtitleText(sub);
         m_machineComponentScriptInstance.InitializeStep3();
@@ -96,6 +103,7 @@ public class StepWiseGuideController : MonoBehaviour
     
     public void CallforStep4(){
         StepState = 4;
+        AudioManager.Instance.PlayAudio(6);  
         string sub = "Now start the motor by dragging the lever. Thus the test piece is twisted.";
         m_MachineInstanceUI.UpdateSubtitleText(sub);
         m_machineComponentScriptInstance.InitializeStep4();

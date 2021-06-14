@@ -4,8 +4,11 @@ using UnityEngine;
 public class infoCanvasComponent : MonoBehaviour
 {
     bool isPopupedUp = false;
-    public TextMeshProUGUI m_infoText;
+    // public TextMeshProUGUI m_infoText;
     float anim_timer = 1.5f;
+
+    public ParticleSystem p1system;
+    public ParticleSystem p2system;
 
     void Start()
     {
@@ -24,6 +27,8 @@ public class infoCanvasComponent : MonoBehaviour
         LeanTween.moveLocalY(gameObject, .45f, anim_timer).setEaseOutBack();
         LeanTween.scale(gameObject, new Vector3(.6f, .6f, .6f), anim_timer).setEaseOutBack();
         isPopupedUp = true;
+        p1system.Play();
+        p2system.Play();
     }
 
     public void Dropdown()
@@ -40,18 +45,18 @@ public class infoCanvasComponent : MonoBehaviour
 
     public void SetInfoText(string infoText)
     {
-        m_infoText.text = infoText;
+        // m_infoText.text = infoText;
     }
 
-    void FixedUpdate()
-    {
-        if (isPopupedUp)
-            transform.LookAt(new Vector3(
-               Camera.main.transform.position.x,
-               this.transform.position.y,
-               Camera.main.transform.position.z
-           ));
-    }
+    // void FixedUpdate()
+    // {
+    //     if (isPopupedUp)
+    //         transform.LookAt(new Vector3(
+    //            Camera.main.transform.position.x,
+    //            this.transform.position.y,
+    //            Camera.main.transform.position.z
+    //        ));
+    // }
 
     //  0.86
 

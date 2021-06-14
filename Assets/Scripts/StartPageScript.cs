@@ -1,11 +1,12 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class StartPageScript : MonoBehaviour
 { 
     public void PracticeBtnPressed(){
-       SceneManager.LoadScene(
+       SceneManager.LoadSceneAsync(
            SceneManager.GetActiveScene().buildIndex + 1
        );
     }
@@ -16,7 +17,7 @@ public class StartPageScript : MonoBehaviour
     }
 
     public void DemoBtnPressed(){
-
+        
     }
 
     public GameObject messagePrefab;

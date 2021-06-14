@@ -130,6 +130,7 @@ public class LeverScript02 : MonoBehaviour
 
 
         // Change summary text after view is played
+        AudioManager.Instance.PlayAudio(7);
         string sub = "Take readings of torque and angle of twist. Note down those values on the adjacent board.";
         ui_interface.UpdateSubtitleText(sub);
     }
@@ -176,6 +177,7 @@ public class LeverScript02 : MonoBehaviour
             ui_interface.InstantiateArrowPrefab(m_LeverObj, info, "lever");
 
              // Change summary text after view is played
+            AudioManager.Instance.PlayAudio(8);
             string sub = "Now continue applying torque till the specimen fractures and take readings at a certain interval.";
             ui_interface.UpdateSubtitleText(sub);
 
