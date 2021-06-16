@@ -20,9 +20,13 @@ public class WhiteBoxAnim : MonoBehaviour
     {
 
         // animation timers
+
+        // loaderPoppigTime = 1f;
+        // whiteBoxFillingTime = 2f;
+        // blueBarFillingTime = 4f;
         loaderPoppigTime = 1f;
-        whiteBoxFillingTime = 2f;
-        blueBarFillingTime = 4f;
+        whiteBoxFillingTime = 1f;
+        blueBarFillingTime = 2f;
 
 
         // offset timers depend uppon animation timers
@@ -51,7 +55,7 @@ public class WhiteBoxAnim : MonoBehaviour
     }
 
     public float GetAnimationTime(){
-        return 7f;
+        return 3.5f;
     }
 
     void UpdateBoxRadialValue(float val, float ratio){

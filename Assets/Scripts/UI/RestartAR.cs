@@ -5,7 +5,7 @@ using GoogleARCore;
 using GoogleARCoreInternal;
 
 /// <summary>
-///
+/// This class main logic is now changed, it aim is to go back to first scene! 
 ///</summary>
 public class RestartAR : MonoBehaviour{
     
@@ -18,9 +18,10 @@ public class RestartAR : MonoBehaviour{
         btn.onClick.AddListener(delegate {RestartExperience();});
     }
 
+    // go back to menu 
     void RestartExperience(){
-        LifecycleManager.Instance.ResetSession();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // LifecycleManager.Instance.ResetSession();
+        SceneManager.LoadScene(0);
     }
 
 }

@@ -97,7 +97,7 @@ public class LeverScript02 : MonoBehaviour
         else
             m_WhiteBox2.SetActive(true);
         // float waitTime = m_WhiteBox.GetComponentInChildren<WhiteBoxAnim>().GetAnimationTime();
-        float waitTime = 7f;
+        float waitTime = 4f;
         ui_interface.SetActiveVideoObject(waitTime, num);
 
         if (num == 1)

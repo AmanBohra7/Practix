@@ -144,7 +144,16 @@ public class InputManager : MonoBehaviour
     {
         UserExp userexp = new UserExp();
 
-        if(modulusG.text == "") modulusG.text = "0.0";
+        // if(modulusG.text == "") {
+        //     Debug.LogWarning("Modulus for empty!");
+        //     modulusG.text = "0.0";
+        // }
+
+        modulusG.text = CalcuateModulus(float.Parse(t_01.text), 
+                float.Parse(t_02.text),
+                float.Parse(angle_01.text),
+                float.Parse(angle_02.text)
+                ).ToString();
 
         userexp.SetValues(
             float.Parse(length.text),
@@ -155,6 +164,8 @@ public class InputManager : MonoBehaviour
             float.Parse(inputFieldHolder["angle_02"].inputField.text),
             float.Parse(modulusG.text)
         );
+
+        Debug.Log("UserExp value in inputmanager : " + modulusG.text + " - " + userexp.values.expValues.modulusG.ToString());
         UserConnection.Instance.UpdateUserExp(userexp);
     }
 
@@ -167,20 +178,17 @@ public class InputManager : MonoBehaviour
 
     float CalcuateModulus(float t1,float t2, float q1,float q2)
     {
-        // q1 = 270
+        // q1 = 270 , q2 = 180
         q2 += 360;
         // q2 = 540
-        // t1 = 403 , t2 = 908
+        // t1 = 403 , t2 = 980
         float num = 5731 * (t2-t1) * m_Length;
-        // num = 31,83,57,050
         float din  = Mathf.Pow(m_Diameter,4) * (q2-q1);
-        // din = 1,36,68,750
         float cal_g = num / din;
-        // cal_g = 23.29
 
         float exp_g = 27;
 
-        if(exp_g != cal_g){
+        if( Mathf.Abs(exp_g - cal_g) > 1 ){
             AudioManager.Instance.PlayAudio(10);
             Debug.LogWarning("Calculated value is very different!");
             string sub = "You have found the wrong value of modulus of rigidity. Please try to perform the experiment again.";

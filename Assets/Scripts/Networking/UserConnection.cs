@@ -12,10 +12,10 @@ public class UserConnection : MonoBehaviour{
     
     public static UserConnection Instance;
 
-    private string LOGIN_URL = "http://localhost:5001/userlogin";
-    private string SIGNUP_URL = "http://localhost:5001/createuser";
-    private string ADD_USEREXP_URL = "http://localhost:5001/userdata";
-    private string GET_USEREXP_URL = "http://localhost:5001/userdata";
+    private string LOGIN_URL = "https://sanmatilabs.herokuapp.com/userlogin";
+    private string SIGNUP_URL = "https://sanmatilabs.herokuapp.com/createuser";
+    private string ADD_USEREXP_URL = "https://sanmatilabs.herokuapp.com/userdata";
+    private string GET_USEREXP_URL = "https://sanmatilabs.herokuapp.com/userdata";
 
     [HideInInspector]
     public string USERID;
@@ -27,6 +27,10 @@ public class UserConnection : MonoBehaviour{
     [HideInInspector]
     public bool isUserDataRecieved;
     public JSONNode userData;
+
+    public GameObject loadingSign;
+    public GameObject loginBtn;
+
 
     void Awake(){
         if(Instance == null){
@@ -42,7 +46,8 @@ public class UserConnection : MonoBehaviour{
         // StartCoroutine(SendUserExp());
 
         // StartCoroutine(GetUserExp());
-        
+        loadingSign.SetActive(false);
+        loginBtn.SetActive(true);
     }
 
     IEnumerator CreateUser(){
@@ -72,7 +77,8 @@ public class UserConnection : MonoBehaviour{
                 Debug.LogWarning("Empty Field!");
                 return;}
         
-        
+        loadingSign.SetActive(true);
+        loginBtn.SetActive(false);
 
         string email = emailInput.text;
         string password = passwordInput.text;
@@ -108,11 +114,19 @@ public class UserConnection : MonoBehaviour{
                 if(www.responseCode == 401){
                     Debug.Log("No user with this email!");
                     StartCoroutine(instantiateMessage("Incorrect Email!"));
+                    loadingSign.SetActive(false);
+                    loginBtn.SetActive(true);
+                    emailInput.text = "";
+                    passwordInput.text = "";
                 }
                     
                 if(www.responseCode == 403){
                     Debug.Log("Wrong password!");
                     StartCoroutine(instantiateMessage("Incorrect Password!"));
+                    loadingSign.SetActive(false);
+                    loginBtn.SetActive(true);
+                    emailInput.text = "";
+                    passwordInput.text = "";
                 }
                     
             }
@@ -130,11 +144,42 @@ public class UserConnection : MonoBehaviour{
 
                 
 
-                SceneManager.LoadSceneAsync(2);
+                // SceneManager.LoadSceneAsync(2);
+                StartCoroutine(LoadScene(2));
 
             }
         }
 
+    }
+
+     IEnumerator LoadScene(int num)
+    {
+        yield return null;
+
+        //Begin to load the Scene you specify
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(num);
+        //Don't let the Scene activate until you allow it to
+        asyncOperation.allowSceneActivation = false;
+        Debug.Log("Pro :" + asyncOperation.progress);
+        //When the load is still in progress, output the Text and progress bar
+        while (!asyncOperation.isDone)
+        {
+            //Output the current progress
+            Debug.Log("Loading progress: " + (asyncOperation.progress * 100) + "%");
+
+            // Check if the load has finished
+            if (asyncOperation.progress >= 0.9f)
+            {
+                //Change the Text to show the Scene is ready
+                // m_Text.text = "Press the space bar to continue";
+                //Wait to you press the space key to activate the Scene
+                // if (Input.GetKeyDown(KeyCode.Space))
+                    //Activate the Scene
+                    asyncOperation.allowSceneActivation = true;
+            }
+
+            yield return null;
+        }
     }
 
 

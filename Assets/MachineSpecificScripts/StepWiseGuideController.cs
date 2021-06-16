@@ -87,7 +87,7 @@ public class StepWiseGuideController : MonoBehaviour
     public void CallforStep2(){
         StepState = 2;
         AudioManager.Instance.PlayAudio(4);  
-        string sub = "Adjust the driving mechanism with the help of geared motor handle and select the direction of motor rotation also.";
+        string sub = "Adjust the driving mechanism with the help of geared motor handle and also select the direction of motor rotation.";
         m_MachineInstanceUI.UpdateSubtitleText(sub);
         m_machineComponentScriptInstance.InitializeStep2();
     }
