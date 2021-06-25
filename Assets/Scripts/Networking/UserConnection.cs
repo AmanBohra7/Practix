@@ -84,7 +84,6 @@ public class UserConnection : MonoBehaviour{
         string password = passwordInput.text;
 
         StartCoroutine(Login(email,password));
-
     }
 
     class User{
@@ -227,6 +226,10 @@ public class UserConnection : MonoBehaviour{
             );
         }
     
+
+        userexp.values.expValues.modulusG = (float)System.Math.Round(userexp.values.expValues.modulusG,2);
+        Debug.Log("testing in userexp: ");
+        Debug.Log(userexp.values.expValues.modulusG);
 
         string sendData = JsonUtility.ToJson(userexp);
 

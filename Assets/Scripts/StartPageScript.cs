@@ -17,7 +17,7 @@ public class StartPageScript : MonoBehaviour
     }
 
     public void DemoBtnPressed(){
-        
+        SceneManager.LoadScene("Demo");
     }
 
     public GameObject messagePrefab;

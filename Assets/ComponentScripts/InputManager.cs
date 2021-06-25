@@ -96,7 +96,7 @@ public class InputManager : MonoBehaviour
         diameter.text = userData["values"]["rodInfo"]["diameter"];
 
 
-        modulusG.text = userData["values"]["expValues"]["modulusG"];
+        modulusG.text = System.Math.Round(float.Parse(userData["values"]["expValues"]["modulusG"]),2 ).ToString();
         // g_02.text = userData["values"]["expValues"]["row02"]["modulusG"];
     }
 
@@ -144,11 +144,6 @@ public class InputManager : MonoBehaviour
     {
         UserExp userexp = new UserExp();
 
-        // if(modulusG.text == "") {
-        //     Debug.LogWarning("Modulus for empty!");
-        //     modulusG.text = "0.0";
-        // }
-
         modulusG.text = CalcuateModulus(float.Parse(t_01.text), 
                 float.Parse(t_02.text),
                 float.Parse(angle_01.text),
@@ -165,7 +160,7 @@ public class InputManager : MonoBehaviour
             float.Parse(modulusG.text)
         );
 
-        Debug.Log("UserExp value in inputmanager : " + modulusG.text + " - " + userexp.values.expValues.modulusG.ToString());
+        Debug.Log("UserExp value in inputmanager : " + float.Parse(modulusG.text) + " - " + userexp.values.expValues.modulusG.ToString());
         UserConnection.Instance.UpdateUserExp(userexp);
     }
 
@@ -201,7 +196,7 @@ public class InputManager : MonoBehaviour
 
         Debug.Log("Calculated G : "+cal_g.ToString());
         Debug.Log("Actual G : "+exp_g.ToString());
-        return cal_g;
+        return (float)System.Math.Round(cal_g,2);
     }
 
     void FixedUpdate()
